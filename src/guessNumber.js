@@ -1,14 +1,46 @@
 "use strict";
 
-function guessNumber() {
+function consoleInput() {
 
-    let inputNumber = "1234";
+    const readline = require('readline');
 
-    let answer = "1234";
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
 
-    let inputNumberArray = inputNumber.split(""),answerArray = answer.split("");
+    var myInput;
 
-    let aCount = 0,bCount = 0;
+    console.log("Please input the number:");
+
+    rl.on('line', function (input) {
+
+        // 下面就可以对数据进行处理......
+        //console.log(input);
+
+        //开始猜数字
+        guessNumber(input);
+
+        rl.close();
+    });
+
+    rl.on('close', function() {
+        console.log('程序结束');
+        process.exit(0);
+    });
+
+}
+
+function guessNumber(input) {
+
+   //let inputNumber = "1234";
+
+   let answer = "1234";
+
+   let  inputNumberArray = input.split(" ");
+   let  answerArray = answer.split("");
+
+   let aCount = 0,bCount = 0;
 
     for (let i = 0; i < inputNumberArray.length; i++) {
 
@@ -31,6 +63,8 @@ function guessNumber() {
 
 }
 
-guessNumber();
+
+consoleInput();
+
 
 
